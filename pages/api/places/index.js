@@ -14,11 +14,4 @@ export default async function handler(request, response) {
     const location = await Location.create(request.body);
     return response.status(200).json("Posted");
   }
-
-  if (request.method === "PUT") {
-    const updatedLocation = await request.body;
-    await Location.findByIdAndUpdate(id, updatedLocation);
-
-    return response.status(200).json("Updated");
-  }
 }

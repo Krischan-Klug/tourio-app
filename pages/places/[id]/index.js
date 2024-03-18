@@ -39,6 +39,16 @@ export default function DetailsPage() {
 
   function deletePlace() {
     console.log("deleted?");
+    const response = fetch(`/api/places/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.ok) {
+      router.push("/");
+    }
   }
 
   return (

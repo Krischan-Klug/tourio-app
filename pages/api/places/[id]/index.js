@@ -15,4 +15,16 @@ export default async function handler(request, response) {
     console.log("DATA LOCATION!", location);
     return response.status(200).json(location);
   }
+
+  if (request.method === "PUT") {
+    const updatedLocation = await request.body;
+    await Location.findByIdAndUpdate(id, updatedLocation);
+
+    return response.status(200).json("Updated");
+  }
+
+  if (request.method === "DELETE") {
+    await Location.findByIdAndDelete(id);
+    return response.status(200).json("Deleted");
+  }
 }
